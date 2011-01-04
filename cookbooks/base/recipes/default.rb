@@ -1,8 +1,14 @@
+include_recipe "apt"
+
+file "/etc/apt/apt.conf.d/02proxy" do
+  content "Acquire::http { Proxy \"#{node.apt_cache}\"};"
+  notifies :run, resources(:execute => "apt-get update"), :immediately
+  only_if { node.apt_cache }
+end
 
 %w(ssh
    sudo
    users
-   apt
    bash-vim
    ppa
    ruby_enterprise
@@ -34,3 +40,4 @@ gems.each do |gem, v|
     version v
   end
 end
+
