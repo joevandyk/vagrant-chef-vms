@@ -13,6 +13,7 @@ Vagrant::Config.run do |config|
   config.chef.roles_path = "roles"
   config.vm.provisioner = :chef_solo
   config.chef.json.merge!({:users => { :monkey => { :ssh_authorized_keys => your_ssh_public_key } } } )
+  config.chef.json.merge!({:main_user => :monkey})
   config.chef.add_recipe "base"
 
   config.vm.define :haskell do |h|

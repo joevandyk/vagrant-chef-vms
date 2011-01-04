@@ -13,11 +13,8 @@ end
 
 %w(vim
    man-db
-   libxml2-dev
-   libxslt1-dev
    build-essential
    git-core
-   libmagick++-dev
    libcurl4-openssl-dev
    command-not-found
    htop

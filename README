@@ -1,0 +1,14 @@
+Install ruby, git, bundler, VirtualBox 4.0.
+
+git checkout git://github.com/joevandyk/vagrant-chef-vms.git vms
+cd vms
+bundle install
+./bin/vagrant up
+ssh monkey@33.33.33.10
+
+Pretty much it.  
+
+After you update a chef recipe, you can run
+./bin/vagrant provision
+
+And chef will rerun.
