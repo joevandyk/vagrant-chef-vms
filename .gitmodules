@@ -1,0 +1,3 @@
+[submodule "common_cookbooks"]
+	path = common_cookbooks
+	url = git://github.com/joevandyk/chef-cookbooks.git
