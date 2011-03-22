@@ -14,7 +14,7 @@ Vagrant::Config.run do |config|
   # Use chef-solo for setting VMs up
   config.vm.provision :chef_solo do |chef|
     chef.log_level = :debug
-    chef.cookbooks_path = "cookbooks"
+    chef.cookbooks_path = ["cookbooks", "common_cookbooks"]
     chef.roles_path = "roles"
     chef.json.merge!({:users => { :monkey => { :ssh_authorized_keys => your_ssh_public_key } } } )
     chef.json.merge!({:main_user => :monkey})

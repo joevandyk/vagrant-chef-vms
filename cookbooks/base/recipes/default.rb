@@ -1,10 +1,13 @@
 include_recipe "apt"
 
-file "/etc/apt/apt.conf.d/02proxy" do
-  content "Acquire::http { Proxy \"#{node.apt_cache}\"};"
-  notifies :run, resources(:execute => "apt-get update"), :immediately
-  only_if { node.apt_cache }
-end
+#file "/etc/apt/apt.conf.d/02proxy" do
+  #if node.apt_cache
+    #content "Acquire::http { Proxy \"#{node.apt_cache}\"};"
+    #notifies :run, resources(:execute => "apt-get update"), :immediately
+  #else
+    #action :delete
+  #end
+#end
 
 %w(ssh
    sudo
