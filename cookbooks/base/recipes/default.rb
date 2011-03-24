@@ -1,6 +1,7 @@
 include_recipe "apt"
 
-%w(ssh
+%w(hostname
+   ssh
    sudo
    users
    bash-vim

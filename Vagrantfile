@@ -18,12 +18,16 @@ Vagrant::Config.run do |config|
     chef.roles_path = "roles"
     chef.json.merge!({:users => { :monkey => { :ssh_authorized_keys => your_ssh_public_key } } } )
     chef.json.merge!({:main_user => :monkey})
+    chef.json.merge!({:node_hostname => "scratch1.dev"})
     chef.add_recipe "base"
+    chef.add_recipe "graphite"
+    chef.add_recipe "node_coffee"
 
     # Connect to the apt cacheer vm for downloading deb packages
     #chef.json.merge!({:apt_cache => "http://33.33.33.2:3142"})
 
     # Setup a VM that's just used for caching apt packages
+=begin
     config.vm.define :apt_cacher do |c|
       c.vm.customize { |vm| vm.name = "apt-cacher" }
       c.vm.network "33.33.33.2"
@@ -46,12 +50,14 @@ Vagrant::Config.run do |config|
       chef.add_recipe "base"
       chef.add_recipe "scala"
     end
+=end
 
     # Setup a VM used for random development
     config.vm.define :scratch do |c|
       c.vm.customize { |vm| vm.name = "scratch" }
       c.vm.network "33.33.33.12"
       chef.add_recipe "base"
+      chef.add_recipe "graphite"
     end
   end
 end
