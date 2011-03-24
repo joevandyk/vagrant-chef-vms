@@ -1,6 +1,7 @@
-include_recipe "apt"
 
-%w(hostname
+%w(apt
+   chef
+   hostname
    ssh
    sudo
    users

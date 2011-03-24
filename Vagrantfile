@@ -8,8 +8,8 @@ end
 
 Vagrant::Config.run do |config|
   # Use lucid32 as the base box
-  config.vm.box = "lucid32"
-  config.vm.box_url = "https://s3.amazonaws.com/tanga/lucid32.box"
+  config.vm.box = "tanga-dev"
+  config.vm.box_url = "https://s3.amazonaws.com/tanga/tanga-dev.box"
 
   # Use chef-solo for setting VMs up
   config.vm.provision :chef_solo do |chef|
